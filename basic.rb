@@ -30,11 +30,10 @@ go! do
    gitAddAll()
    gitCommit(date)
    gitPush()
-
-	 sleep(1.days)
-	 # or using time
-	 # sleep(Time.parse("23:00:02") - Time.now)
-	 puts "Sleeping one day"
+   
+   sleep(1.days)
+   # or using time
+   # sleep(Time.parse("23:00:02") - Time.now)
 end
 
 def scrape(language, filename)
