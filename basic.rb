@@ -21,12 +21,12 @@ go! do
    createMarkDown(date, filename)
 
    scrape("ruby", filename)
-   # scrape("go", filename)
-   # scrape("python", filename)
-   # scrape("php", filename)
-   # scrape("javascript", filename)
+   scrape("go", filename)
+   scrape("python", filename)
+   scrape("php", filename)
+   scrape("javascript", filename)
 
-   # gitPull()
+   gitPull()
    gitAddAll()
    gitCommit(date)
    gitPush()
