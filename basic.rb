@@ -30,9 +30,7 @@ go! do
    gitAddAll()
    gitCommit(date)
    gitPush()
-
-   puts "Sleeping one day"
-  
+   
    sleep(1.days)
    # or using time
    # sleep(Time.parse("23:00:02") - Time.now)
