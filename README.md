@@ -1,2 +1,2 @@
 # github-trending
-Implementation Goroutine, in Ruby
+Implementation Goroutine, in Ruby.
