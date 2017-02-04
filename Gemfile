@@ -1,5 +1,4 @@
 source "http://rubygems.org"
-ruby '2.3.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -7,4 +6,4 @@ git_source(:github) do |repo_name|
 end
 
 gem 'agent',   '0.12.0'
-gem 'nokogiri', github: 'sparklemotion/nokogiri'
+gem 'nokogiri', '1.7.0.1'
