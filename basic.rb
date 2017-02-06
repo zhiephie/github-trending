@@ -59,8 +59,7 @@ def scrape(language, filename)
    
     hrefs.each do |href|
       remote_url = "https://github.com"+href
-      titles = row.css('h3 span').text()
-      title = titles.delete "/"
+      title = row.css('h3 a').text()
       description = row.css('p').text()
       puts "Fetching #{remote_url}..."
       target.write("* [" + title.strip! + "](" + remote_url + "): " + description.strip! + "\n")
@@ -94,7 +93,7 @@ end
 def createMarkDown(date, filename)
   s = "###" + date + "\n"
   local_fname = "#{DIR}/#{filename}"
-  open(local_fname, 'w'){ |file|
+  File.open(local_fname, 'w'){ |file|
     file.write(s)
   }
 end
