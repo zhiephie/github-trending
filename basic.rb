@@ -11,12 +11,10 @@ Dir.mkdir(DIR) unless File.exists?(DIR)
 
 # go routines
 go! do
-   puts dateString
+   puts 'Starting...'
 
    date = dateString
    filename = date + '.md'
-
-   puts filename
 
    createMarkDown(date, filename)
 
@@ -38,7 +36,8 @@ go! do
 end
 
 def scrape(language, filename)
-  target = File.open("#{DIR}/#{filename}", "a")
+  local_fname = "#{DIR}/#{filename}"
+  target = File.open(local_fname, "a")
 
   target.write("\n####")
 
@@ -51,7 +50,7 @@ def scrape(language, filename)
   doc = Nokogiri::HTML(open(uri))
   rows = doc.css('ol.repo-list li')
 
-  rows[0..-1].each do |row|
+  rows.each do |row|
   
     hrefs = row.css("h3 a").map{ |a| 
       a['href']
@@ -93,9 +92,12 @@ end
 def createMarkDown(date, filename)
   s = "###" + date + "\n"
   local_fname = "#{DIR}/#{filename}"
-  File.open(local_fname, 'w'){ |file|
-    file.write(s)
-  }
+  target = File.open(local_fname, 'w')
+  target.write(s)
+  target.close
+  # File.open(local_fname, 'w'){ |file|
+  #   file.write(s)
+  # }
 end
 
 loop do
