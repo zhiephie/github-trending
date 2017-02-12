@@ -32,7 +32,7 @@ go! do
    gitPush()
    
    sleep(24.hours)
-   # sleep(1.days)
+   #sleep(1.days)
    # or using time
    # sleep(Time.parse("22:00:00") - Time.now)
 end
