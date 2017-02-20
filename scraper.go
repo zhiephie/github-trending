@@ -31,6 +31,7 @@ func main() {
 		scrape("python", path, filename)
 		scrape("php", path, filename)
 		scrape("javascript", path, filename)
+		scrape("java", path, filename)
 
 		gitPull()
 		gitAddAll()
