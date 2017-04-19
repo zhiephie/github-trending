@@ -26,6 +26,8 @@ func main() {
 		createMarkDown(dateString, path, filename)
 
 		// //TODO: use goroutinez
+		scrape("elixir", path, filename)
+		scrape("erlang", path, filename)
 		scrape("ruby", path, filename)
 		scrape("go", path, filename)
 		scrape("python", path, filename)
