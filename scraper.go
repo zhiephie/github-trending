@@ -116,7 +116,7 @@ func scrape(language string, path string, filename string) {
 	defer f.Close()
 
 	// if _, err = f.WriteString(fmt.Sprintf("\n####%s\n", language)); err != nil {
-	if _, err = f.WriteString(fmt.Sprintf("####%s", language)); err != nil {
+	if _, err = f.WriteString(fmt.Sprintf("\n####%s \n", language)); err != nil {
 		panic(err)
 	}
 
