@@ -1,6 +1,5 @@
 #! /usr/bin/env ruby
 
-require 'agent'
 require 'time'
 require 'nokogiri'
 require 'open-uri'
@@ -9,30 +8,27 @@ t = Time.now
 DIR = t.strftime('%Y-%m')
 Dir.mkdir(DIR) unless File.exists?(DIR)
 
-# go routines
-go! do
+def job 
+
    puts 'Starting...'
 
    date = dateString
    filename = date + '.md'
 
    createMarkDown(date, filename)
+  
+   scrape('elixir', filename)
+   scrape('erlang', filename)
+   scrape('ruby', filename)
+   scrape('go', filename)
+   scrape('python', filename)
+   scrape('php', filename)
+   scrape('javascript', filename)
+   scrape('java', filename)
 
-   scrape("ruby", filename)
-   scrape("go", filename)
-   scrape("python", filename)
-   scrape("php", filename)
-   scrape("javascript", filename)
-
-   gitPull()
-   gitAddAll()
-   gitCommit(date)
-   gitPush()
+   git_add_commit_push(date)
    
-   sleep(24.hours)
-   #sleep(1.days)
-   # or using time
-   # sleep(Time.parse("22:00:00") - Time.now)
+   puts 'Done.!'
 end
 
 def scrape(language, filename)
@@ -61,27 +57,18 @@ def scrape(language, filename)
       title = row.css('h3 a').text()
       description = row.css('p').text()
       puts "Fetching #{remote_url}..."
-      target.write("* [" + title.strip! + "](" + remote_url + "): " + description.strip! + "\n")
+      target.write("* [#{title.strip!}" "](#{remote_url}" "):  #{description.strip!}" "\n")
+      #target.write("* [" + title.strip! + "](" + remote_url + "): " + description.strip! + "\n")
     end # done: hrefs.each
 
   end # done: rows.each
   target.close
 end
 
-def gitPull
-  system "git pull origin master"
-end
-
-def gitAddAll
+def git_add_commit_push(date)
   system "git add -A"
-end
-
-def gitCommit(date)
-  system "git commit -am #{date}"
-end
-
-def gitPush
-  system "git push origin master"
+  system "git commit -m #{date}"
+  system "git push -u origin master"
 end
 
 def dateString
@@ -95,10 +82,12 @@ def createMarkDown(date, filename)
   target = File.open(local_fname, 'w')
   target.write(s)
   target.close
-  # File.open(local_fname, 'w'){ |file|
-  #   file.write(s)
-  # }
 end
 
 loop do
+  job()
+  sleep(86400)
+  # or using time
+  # sleep(Time.parse("22:00:00") - Time.now)
 end
+
