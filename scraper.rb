@@ -35,7 +35,7 @@ def scrape(language, filename)
   local_fname = "#{DIR}/#{filename}"
   target = File.open(local_fname, "a")
 
-  target.write("\n####")
+  target.write("\n#### ")
 
   target.write(language)
 
@@ -77,7 +77,7 @@ def dateString
 end
 
 def createMarkDown(date, filename)
-  s = "###" + date + "\n"
+  s = "### " + date + "\n"
   local_fname = "#{DIR}/#{filename}"
   target = File.open(local_fname, 'w')
   target.write(s)
