@@ -3,7 +3,9 @@
 ## Intro
 Tracking the most popular Github repos, updated daily(Ruby version)
 
-inspired by [github-trending(Go Version)](https://github.com/josephyzhou/github-trending)
+inspired by:
+ - [github-trending(Go Version)](https://github.com/josephyzhou/github-trending)
+ - [github-trending(Python Version)](https://github.com/bonfy/github-trending)
 
 
 ## Run
