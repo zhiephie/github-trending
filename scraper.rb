@@ -58,10 +58,9 @@ def scrape(language, filename)
       description = row.css('p').text()
       puts "Fetching #{remote_url}..."
       target.write("* [#{title.strip!}" "](#{remote_url}" "):  #{description.strip!}" "\n")
-      #target.write("* [" + title.strip! + "](" + remote_url + "): " + description.strip! + "\n")
-    end # done: hrefs.each
+    end # hrefs.each
 
-  end # done: rows.each
+  end # rows.each
   target.close
 end
 

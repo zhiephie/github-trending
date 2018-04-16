@@ -1,9 +1,3 @@
-agent_socket.rb
-customer.rb
 Gemfile.lock
-koroutine.rb
-select_channel.rb
 nohup.out
-scraper
-scraper.go
 log.log
